@@ -49,8 +49,6 @@ jobs:
           source.unlink()
           print(f'Restored {count} files')
           PY
-      - name: Verify static website and source
-        run: python3 -m unittest discover -s tests -v
       - name: Commit full source to main
         run: |
           git config user.name "github-actions[bot]"
@@ -73,6 +71,8 @@ jobs:
         run: |
           python tools/build_pdf.py
           test -s docs/pdf/antigravity-guide.pdf
+      - name: Verify static website and source
+        run: python3 -m unittest discover -s tests -v
       - name: Commit generated PDF
         run: |
           git add docs/pdf/antigravity-guide.pdf
