@@ -1,0 +1,24 @@
+name: Validate Antigravity tutorial and website
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate site content and links
+        run: python3 -m unittest discover -s tests -v
+      - name: Verify printable PDF
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          pdf=Path('docs/pdf/antigravity-guide.pdf')
+          assert pdf.is_file() and pdf.stat().st_size > 20000
+          assert pdf.read_bytes()[:5] == b'%PDF-'
+          print(f'PDF valid header, {pdf.stat().st_size:,} bytes')
+          PY
