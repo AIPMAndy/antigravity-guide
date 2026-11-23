@@ -1,0 +1,5 @@
+# Optional only for regenerating HTML and PDF. Published site requires no packages.
+Jinja2>=3.1,<4
+WeasyPrint>=61,<70
+# For optional browser smoke test only:
+# playwright>=1.40
