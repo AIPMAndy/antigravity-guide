@@ -1,0 +1,82 @@
+name: Restore full Antigravity guide
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_bootstrap/source.lzma.b64'
+      - '.github/workflows/bootstrap.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Restore verified source files
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import base64, lzma
+          from pathlib import Path, PurePosixPath
+          source=Path('_bootstrap/source.lzma.b64')
+          if not source.is_file():
+              print('Nothing to restore')
+              raise SystemExit(0)
+          raw=lzma.decompress(base64.b64decode(source.read_text().strip(),validate=True))
+          cursor=0
+          count=0
+          while cursor<len(raw):
+              if len(raw)-cursor<6: raise ValueError('Truncated record')
+              n=int.from_bytes(raw[cursor:cursor+2],'big');cursor+=2
+              size=int.from_bytes(raw[cursor:cursor+4],'big');cursor+=4
+              if not n or n>1024 or size>1000000 or cursor+n+size>len(raw): raise ValueError('Invalid record')
+              name=raw[cursor:cursor+n].decode('utf-8');cursor+=n
+              value=raw[cursor:cursor+size];cursor+=size
+              path=PurePosixPath(name)
+              if path.is_absolute() or '..' in path.parts or path.parts[0] in ('.git','_bootstrap'):
+                  raise ValueError('Unsafe archive path')
+              target=Path(*path.parts)
+              target.parent.mkdir(parents=True,exist_ok=True)
+              target.write_bytes(value)
+              count+=1
+          if count!=39: raise ValueError(f'Expected 39 files, got {count}')
+          for item in ['docs/index.html','docs/app.js','docs/style.css','tools/build_pdf.py','README.md']:
+              if not Path(item).is_file(): raise ValueError(f'Missing {item}')
+          source.unlink()
+          print(f'Restored {count} files')
+          PY
+      - name: Verify static website and source
+        run: python3 -m unittest discover -s tests -v
+      - name: Commit full source to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "feat: publish 12-chapter Antigravity guide and interactive website"
+            git push
+          fi
+      - name: Set up Python for PDF build
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF dependencies and Chinese fonts
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk
+          python -m pip install -r requirements-dev.txt
+      - name: Build and validate PDF
+        run: |
+          python tools/build_pdf.py
+          test -s docs/pdf/antigravity-guide.pdf
+      - name: Commit generated PDF
+        run: |
+          git add docs/pdf/antigravity-guide.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: publish Antigravity A5 printable PDF"
+            git push
+          fi
