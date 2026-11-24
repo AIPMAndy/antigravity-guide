@@ -51,5 +51,15 @@ class SiteTest(unittest.TestCase):
         self.assertIn('非 Google 官方',HTML)
         self.assertIn('metaver.vip',HTML)
         self.assertIn('AIPMAndy',HTML)
+        self.assertIn('https://www.a6no1.cn/',HTML)
+    def test_new_interaction_controls(self):
+        for key in ['undoProgress','lessonReset','promptReset','lessonCount','promptCount','genStatus']:
+            self.assertIn(key,self.parse.ids)
+        self.assertIn('aria-valuenow="0"',HTML)
+        self.assertIn('copyGenerated.disabled=true',JS)
+        self.assertIn('signature()!==snapshot',JS)
+        self.assertIn('replaceProgress(safe',JS)
+        self.assertIn('lesson-search:focus-within',CSS)
+        self.assertIn('transition:none!important',CSS)
 
 if __name__=='__main__': unittest.main()

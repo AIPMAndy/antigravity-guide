@@ -8,9 +8,17 @@ permissions:
   contents: read
 jobs:
   quality:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+      - name: Install browser and source renderer
+        run: |
+          python3 -m pip install 'jinja2>=3.1,<4' playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - name: Validate reproducible site source
+        run: |
+          python3 tools/build.py
+          git diff --exit-code -- docs/index.html docs/sitemap.xml docs/robots.txt
       - name: Validate site content and links
         run: python3 -m unittest discover -s tests -v
       - name: Verify printable PDF
@@ -22,3 +30,11 @@ jobs:
           assert pdf.read_bytes()[:5] == b'%PDF-'
           print(f'PDF valid header, {pdf.stat().st_size:,} bytes')
           PY
+      - name: Browser interaction, focus and reduced-motion regression
+        run: python3 tests/browser_smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: antigravity-browser-qa
+          path: browser-qa/
+          if-no-files-found: ignore
