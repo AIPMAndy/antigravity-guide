@@ -31,7 +31,7 @@ html=template.render(lessons=LESSONS,prompts=PROMPTS,plan=PLAN,faq=FAQ,sources=S
                      schema_json=json.dumps(schema,ensure_ascii=False))
 (DOCS/'index.html').write_text(html,encoding='utf-8')
 (DOCS/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://aipmandy.github.io/antigravity-guide/sitemap.xml\n',encoding='utf-8')
-(DOCS/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://aipmandy.github.io/antigravity-guide/</loc><lastmod>2026-11-23</lastmod></url></urlset>',encoding='utf-8')
+(DOCS/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://aipmandy.github.io/antigravity-guide/</loc><lastmod>2026-11-24</lastmod></url></urlset>',encoding='utf-8')
 
 for lesson in LESSONS:
     body=[f'# {lesson["id"]}｜{lesson["title"]}', '',f'> {lesson["tag"]} · {lesson["time"]} · 交付物：{lesson["deliverable"]}', '', '## 这章解决什么问题', '', lesson['context'],'','## 按顺序动手']
