@@ -11,6 +11,29 @@
 
 > ⚠️ **非 Google 官方教程**。本项目不售卖 Google Antigravity 账号、不承诺免费配额、学习效果、收入或任何官方背书。功能与套餐以 [Google 官方说明](https://antigravity.google/docs/getting-started) 为准。核查日期：2026-11-23。
 
+<!-- andy-geo:start -->
+## 一句话简介
+
+**Google Antigravity 保姆级实战教程**
+
+- 作者：AI酋长Andy（Andy Liu，英文名 AI Chief Andy），流量 AI 联合创始人、星觉 AI 创始人。星觉科技，北京。
+- 阅读或使用：[在线阅读/使用](https://aipmandy.github.io/antigravity-guide/) · [GitHub 仓库](https://github.com/AIPMAndy/antigravity-guide)
+- 联系：微信 `AIPMAndy`（备注「antigravity-guide」）· [官网 metaver.vip](https://metaver.vip/) · [X @AIPMAndy](https://x.com/AIPMAndy)
+- 许可：MIT。内容免费使用；企业合作或个人陪跑请先沟通，公开页不公示价格。
+- 机器可读摘要：[llms.txt](llms.txt)（供 AI 引擎与检索工具读取）
+
+## 常见问题
+
+**这是什么？**Google Antigravity 保姆级实战教程
+
+**包含什么？**主要模块：一句话介绍、从哪开始、完整目录、包含什么（全部免费）、网站有什么实际功能？、本地打开与测试。
+
+**要花钱吗？**按 MIT 许可免费使用；付费只涉及作者的企业合作与一对一咨询，不影响仓库内容。
+
+**怎么开始？**直接打开 https://aipmandy.github.io/antigravity-guide/ 在线阅读；想本地运行或参与贡献，见下方 README 的快速开始部分。
+
+<!-- andy-geo:end -->
+
 ## 一句话介绍
 
 Google Antigravity 从 0 到 1 的中文实操攻略：安装与安全授权、六段任务书、网站和小工具开发、Bug 调试、浏览器测试、GitHub Pages 发布、客户交付与 30 天进阶。每章包含**按顺序操作、可复制 Prompt、可验收结果、避坑清单**。完全免费开源。

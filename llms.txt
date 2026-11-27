@@ -1,0 +1,49 @@
+# Google Antigravity 保姆级实战教程
+
+> Google Antigravity 保姆级实战教程
+
+- 作者：AI酋长Andy（AIPMAndy），官网 https://metaver.vip/
+- 开源仓库：https://github.com/AIPMAndy/antigravity-guide
+- 在线地址：https://aipmandy.github.io/antigravity-guide/
+- 许可：MIT
+- 语言：中文（zh-CN）
+- 最近更新：2026-11-24
+
+## 这是什么
+
+AI 酋长 Andy 独立开源中文实战手册  
+12 章 · 18 条 Prompt · 7 天路线 · 2 个项目路径 · 免费 PDF · 可互动网站
+在线网站（需先启用 GitHub Pages）https://aipmandy.github.io/antigravity-guide/ · PDF 电子书docs/pdf/antigravity-guide.pdf · 7 天上手START-HERE.md · 全部教程guides/ · Prompt 库prompts/README.md · AI 酋长 Andy 官网https://metaver.vip/
+
+## 主要页面
+
+- [Antigravity 保姆级实战教程｜AI 酋长 Andy](https://aipmandy.github.io/antigravity-guide/)
+
+## 内容目录
+
+- 一句话介绍
+- 从哪开始
+- 完整目录
+- 包含什么（全部免费）
+- 网站有什么实际功能？
+- 本地打开与测试
+- GitHub Pages 部署
+- 安全、事实与服务说明
+- 社区反馈
+
+## 关键事实
+
+- 名称：Google Antigravity 保姆级实战教程
+- 类型：中文开源项目 / 学习手册
+- 内容规模：12 章
+- 许可：MIT
+- 语言：中文
+- 最近更新：2026-11-24
+- 仓库：https://github.com/AIPMAndy/antigravity-guide
+
+## 相关链接
+
+- [作者官网](https://metaver.vip/)
+- [GitHub 主页](https://github.com/AIPMAndy/AIPMAndy)
+- [开源总目录](https://aipmandy.github.io/)
+- [机器可读摘要](https://aipmandy.github.io/antigravity-guide/llms.txt)
