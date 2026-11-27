@@ -146,6 +146,29 @@ python3 -m http.server 8000 --directory docs
 
 **作者：AI 酋长 Andy** · [官网](https://metaver.vip/) · 微信 `AIPMAndy` · [GitHub](https://github.com/AIPMAndy)
 '''
-(ROOT/'README.md').write_text(README,encoding='utf-8')
+GEO_BLOCK = '''<!-- andy-geo:start -->
+## 一句话简介
+
+**Google Antigravity 保姆级实战教程**
+
+- 作者：AI酋长Andy（Andy Liu，英文名 AI Chief Andy），流量 AI 联合创始人、星觉 AI 创始人。星觉科技，北京。
+- 阅读或使用：[在线阅读/使用](https://aipmandy.github.io/antigravity-guide/) · [GitHub 仓库](https://github.com/AIPMAndy/antigravity-guide)
+- 联系：微信 `AIPMAndy`（备注「antigravity-guide」）· [官网 metaver.vip](https://metaver.vip/) · [X @AIPMAndy](https://x.com/AIPMAndy)
+- 许可：MIT。内容免费使用；企业合作或个人陪跑请先沟通，公开页不公示价格。
+- 机器可读摘要：[llms.txt](llms.txt)（供 AI 引擎与检索工具读取）
+
+## 常见问题
+
+**这是什么？**Google Antigravity 保姆级实战教程
+
+**包含什么？**主要模块：一句话介绍、从哪开始、完整目录、包含什么（全部免费）、网站有什么实际功能？、本地打开与测试。
+
+**要花钱吗？**按 MIT 许可免费使用；付费只涉及作者的企业合作与一对一咨询，不影响仓库内容。
+
+**怎么开始？**直接打开 https://aipmandy.github.io/antigravity-guide/ 在线阅读；想本地运行或参与贡献，见下方 README 的快速开始部分。
+
+<!-- andy-geo:end -->'''
+
+(ROOT/'README.md').write_text(README + GEO_BLOCK,encoding='utf-8')
 
 print(f'Built docs/index.html ({len(html):,} chars), {len(LESSONS)} guides, and README')
